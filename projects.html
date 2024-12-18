@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharath Girirajan - Projects & Achievements</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* Additional styles for projects and achievements page */
+        .projects-container, .achievements-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        .project-box, .achievement-box {
+            flex: 1 1 300px;
+            max-width: 350px;
+            background: var(--second-bg-color);
+            border-radius: 2rem;
+            padding: 2rem;
+            text-align: center;
+            border: .2rem solid var(--bg-color);
+            transition: .5s ease;
+        }
+        .project-box:hover, .achievement-box:hover {
+            border-color: var(--main-color);
+            transform: scale(1.02);
+        }
+        .project-box h3, .achievement-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .project-box p, .achievement-box p {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .project-box a, .achievement-box a {
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            background: var(--main-color);
+            border-radius: 4rem;
+            font-size: 1.6rem;
+            color: var(--second-bg-color);
+            letter-spacing: .1rem;
+            font-weight: 600;
+            transition: .5s ease;
+        }
+        .project-box a:hover, .achievement-box a:hover {
+            box-shadow: 0 0 1rem var(--main-color);
+        }
+
+        /* Photography section styles */
+        .photography-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+
+        .photo-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-box:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-box:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        .photo-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-overlay p {
+            font-size: 0.9rem;
+        }
+
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .nav-btn {
+            background-color: var(--main-color);
+            color: var(--second-bg-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            left: 100%;
+            border-radius: 10px;
+            size: 30px;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--bg-color);
+            color: var(--main-color);
+        }
+
+        /* Updated styles for blurred background */
+        body {
+            position: relative;
+            background-image: url('jan-vlacuha-Rns_A8bJ_dQ-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+            background-color: rgba(2, 2, 2, 0.3);
+            z-index: -1;
+        }
+
+        /* Adjust existing styles for better contrast */
+        .header, .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .project-box, .achievement-box, .photo-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .project-box h3, .achievement-box h3, .photo-overlay h3 {
+            color: var(--main-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-box p, .achievement-box p, .photo-overlay p {
+            color: var(--text-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .heading {
+            color: var(--main-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Adjust button styles for better visibility */
+        .nav-btn, .project-box a, .achievement-box a {
+            background-color: rgba(0, 238, 255, 0.7);
+            color: var(--bg-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            text-shadow: none;
+        }
+
+        .nav-btn:hover, .project-box a:hover, .achievement-box a:hover {
+            background-color: var(--main-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 10px var(--main-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur"></div>
+    <header class="header">
+        <a href="index.html" class="logo">Bharath Girirajan</a>
+        <nav class="navbar">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">ABOUT</a>
+            <a href="index.html#services">Skills</a>
+            <a href="index.html#portfolio">PORTFOLIO</a>
+            <a href="#" class="active">PROJECTS</a>
+            <a href="index.html#contact">CONTACT</a>
+        </nav>
+    </header>
+
+    <section class="projects" id="projects">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="projects-container">
+            <!-- Project boxes will be populated here -->
+        </div>
+    </section>
+
+    <section class="achievements" id="achievements">
+        <h2 class="heading">My <span>Achievements</span></h2>
+        <div class="achievements-container">
+            <!-- Achievement boxes will be populated here -->
+        </div>
+    </section>
+
+    <!-- Add this after the achievements section and before the footer -->
+    <section class="photography" id="photography">
+        <h2 class="heading">My <span>Photography</span></h2>
+        <div class="photography-container">
+            <!-- Photo gallery will be populated here -->
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2024 by Bharath Girirajan | All Rights Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Project data
+        const projects = [
+            {
+                title: "Crypto Bot",
+                description: "A powerful AI-driven chatbot designed to educate and guide users in the field of cryptocurrency. Developed using advanced large language models (LLMs), the chatbot provides real-time insights, answers queries, and improves user engagement for cryptocurrency trading.",
+                link: "https://github.com/Bharath0726/AnandaBot"
+            },
+            {
+                title: "AgriAssist: Smart Farming Companion",
+                description: "An AI-powered application designed to revolutionize farming practices. Features include crop recommendations, disease identification, and customized crop calendars. Built using Python, Streamlit, OpenAI's GPT models, and Langchain.",
+                link: ""
+            },
+            {
+                title: "Virtual Interviewer",
+                description: "An intelligent system that generates interview questions from resumes, records and transcribes candidate responses, and evaluates answers using advanced language models for real-time feedback.",
+                link: ""
+            },
+            {
+                title: "One View",
+                description: "A cool full-stack app enabling users to share a QR code with guests for photo uploads. All the photos are then visible to everyone with the QR. Features facial clustering to group similar faces, allowing users to easily view their photos.",
+                link: ""
+            },
+            {
+                title: "Sign-Interpreter",
+                description: "This project develops an advanced sign language recognition system using deep learning. It interprets gestures from video sequences, enhancing communication for individuals with hearing impairments.",
+                link: ""
+            },
+            {
+                title: "ViziAssist",
+                description: "An advanced technology built using Jetson Nano, leveraging deep learning to analyze road conditions trained on the Indian Driving Dataset. It detects vehicles, humans, bikes, and trucks, triggering specific LEDs to assist visually impaired individuals in driving confidently.",
+                link: ""
+            },
+            {
+                title: "pAInter",
+                description: "An AI-based home visualization system that helps users reimagine their living spaces with different styles and decor.",
+                link: ""
+            },
+            {
+                title: "Payease",
+                description: "An app that scans bills and helps you split the bill with utmost ease with friends and family, simplifying group expenses.",
+                link: ""
+            },
+            {
+                title: "Surreal AI",
+                description: "A real-time chatbot that does voice-to-voice processing and interaction with a Large Language Model, creating natural conversations.",
+                link: ""
+            },
+            {
+                title: "Icebreakers",
+                description: "A website that allows you to write efficient connection messages to your professional connections, enhancing networking opportunities.",
+                link: ""
+            }
+        ];
+
+        /// Achievement data
+const achievements = [
+    {
+        title: "Development of Cutting-Edge AI and ML Projects",
+        description: "Developed multiple projects, including an LLM-powered cryptocurrency chatbot improving prediction accuracy by 15% and an end-to-end MLOps pipeline for insurance premium prediction using AWS EC2 and Docker.",
+        link: "https://github.com/Bharath0726"
+    },
+    {
+        title: "Expertise in Large Language Models and NLP",
+        description: "Specialized in fine-tuning LLMs like LLaMA and GPT, implementing RAG-based architectures for chatbots, and creating NLP pipelines for tasks like sentiment analysis, entity recognition, and text summarization.",
+        link: "#"
+    },
+    {
+        title: "MLOps and Model Deployment Proficiency",
+        description: "Implemented CI/CD pipelines, Dockerized machine learning models, and deployed them on AWS cloud, ensuring scalability and automation in production environments.",
+        link: "#"
+    },
+    {
+        title: "Certifications and Technical Recognition",
+        description: "Achieved Microsoft Certified Power BI Analyst (PL-300) and Azure Fundamentals (AZ-900), validating my expertise in data visualization, analytics, and cloud technologies.",
+        link: "https://www.linkedin.com/in/bharath-karthick/"
+    },
+    {
+        title: "Versatility in Data Visualization and Analytics",
+        description: "Designed dynamic dashboards using Power BI and Tableau, integrating advanced DAX calculations and data modeling to deliver actionable business insights.",
+        link: "#"
+    }
+];
+
+
+        // Photography data
+        const photos = [
+            {
+                title: "Foxie",
+                description: "A close up of a fox around the grasslands of Pune City",
+                imageUrl: "IMG_9599(1).jpg"
+            },
+            {
+                title: "Mountain Landscape",
+                description: "Two chinkaras posing on a perfect morning.",
+                imageUrl: "DSC_0168(4).jpg"
+            },
+            {
+                title: "Panthera Paradus",
+                description: "A panther in the forests of Maharashtra",
+                imageUrl: "6E5A2935(2).jpg"
+            },
+            {
+                title: "Great Horbill",
+                description: "A great horbill in the western ghats of Maharashtra",
+                imageUrl: "DSC_0172(3).jpg"
+            },
+            {
+                title: "Thats my flower!",
+                description: "A moment camptured between 2 sunbirds claiming their territory",
+                imageUrl: "IMG_8038(1).jpg"
+            },
+            {
+                title: "Black Naped Monarch",
+                description: "A black naped monarch perched on a branch",
+                imageUrl: "DSC_0652(2).jpg"
+            }
+        ];
+
+        // Populate projects with pagination
+        const projectsContainer = document.querySelector('.projects-container');
+        const projectsPerPage = 6;
+        let currentPage = 0;
+
+        function displayProjects(page) {
+            projectsContainer.innerHTML = ''; // Clear existing projects
+            const start = page * projectsPerPage;
+            const end = start + projectsPerPage;
+            const pageProjects = projects.slice(start, end);
+
+            pageProjects.forEach(project => {
+                const projectBox = document.createElement('div');
+                projectBox.classList.add('project-box');
+                projectBox.innerHTML = `
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <a href="${project.link}" target="_blank">View Project</a>
+                `;
+                projectsContainer.appendChild(projectBox);
+            });
+
+            // Add navigation arrows
+            const navContainer = document.createElement('div');
+            navContainer.classList.add('project-nav');
+            navContainer.innerHTML = `
+                ${page > 0 ? '<button class="nav-btn prev-btn">&larr; Previous</button>' : ''}
+                ${end < projects.length ? '<button class="nav-btn next-btn">Next &rarr;</button>' : ''}
+            `;
+            projectsContainer.appendChild(navContainer);
+
+            // Add event listeners to navigation buttons
+            const prevBtn = navContainer.querySelector('.prev-btn');
+            const nextBtn = navContainer.querySelector('.next-btn');
+            if (prevBtn) prevBtn.addEventListener('click', () => displayProjects(page - 1));
+            if (nextBtn) nextBtn.addEventListener('click', () => displayProjects(page + 1));
+        }
+
+        // Initial display
+        displayProjects(currentPage);
+
+        // Populate achievements
+        const achievementsContainer = document.querySelector('.achievements-container');
+        achievements.forEach(achievement => {
+            const achievementBox = document.createElement('div');
+            achievementBox.classList.add('achievement-box');
+            achievementBox.innerHTML = `
+                <h3>${achievement.title}</h3>
+                <p>${achievement.description}</p>
+                ${achievement.link !== "#" ? `<a href="${achievement.link}" target="_blank">Learn More</a>` : ''}
+            `;
+            achievementsContainer.appendChild(achievementBox);
+        });
+
+        // Populate photography section
+        const photographyContainer = document.querySelector('.photography-container');
+        photos.forEach(photo => {
+            const photoBox = document.createElement('div');
+            photoBox.classList.add('photo-box');
+            photoBox.innerHTML = `
+                <img src="${photo.imageUrl}" alt="${photo.title}">
+                <div class="photo-overlay">
+                    <h3>${photo.title}</h3>
+                    <p>${photo.description}</p>
+                </div>
+            `;
+            photographyContainer.appendChild(photoBox);
+        });
+    </script>
+</body>
+</html>
