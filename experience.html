@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharath Girirajan - Experience</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+        .header {
+            background-color: var(--second-bg-color);
+            padding: 2rem 9%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header .logo {
+            color: var(--text-color);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .header .navbar a {
+            color: var(--text-color);
+            margin-left: 2rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        .experience-section {
+            padding: 4rem 9%;
+        }
+        .experience-heading {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--main-color);
+        }
+        .experience-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        .experience-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            background: var(--second-bg-color);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .experience-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .experience-content {
+            flex-grow: 1;
+        }
+        .experience-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--main-color);
+        }
+        .experience-subtitle {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-top: 0.5rem;
+        }
+        .experience-duration {
+            font-size: 1.4rem;
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .experience-description {
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Bharath Girirajan</a>
+        <nav class="navbar">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#services">Skills</a>
+            <a href="projects.html">Portfolio</a>
+            <a href="#" class="active">Experience</a>
+        </nav>
+    </header>
+
+    <section class="experience-section">
+        <h2 class="experience-heading">Experience</h2>
+        <div class="experience-container">
+            <div class="experience-item">
+                <div class="experience-logo">
+                    <img src="Ananda.png" alt="Ananda Logo" class="full-logo">
+                </div>
+                <div class="experience-content">
+                    <h3 class="experience-title">Ananda AI, New York, USA.</h3>
+                    <p class="experience-subtitle">Gen AI Developer Intern</p>
+                    <p class="experience-duration">Aug 2024 - Dec 2024</p>
+                    <ul class="experience-description">
+                        <li>
+                            Designed and developed AnandaBot, an AI-powered chatbot built end-to-end using Large Language Models (LLMs) like Llama3-8b-8192, serving as a comprehensive educational platform to address cryptocurrency-related queries with accurate, real-time, and context-aware responses.
+                        </li>
+                        <li>
+                            Implemented a Retrieval-Augmented Generation (RAG) pipeline, integrating proprietary company data with Langchain for robust conversational workflows, achieving 90% log traceability and enhanced domain-specific response accuracy.
+                        </li>
+                        <li>
+                            Developed additional features, including a buy-sell recommendation system using time-series forecasting and deployed the chatbot on a cloud-based architecture with FAISS and PyPDF, reducing data retrieval time by 40% and boosting system performance.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-logo">
+                    <img src="Uconn_Logo.jpeg" alt="Uconn_Logo">
+                </div>
+                <div class="experience-content">
+                    <h3 class="experience-title">Allied Health Science Department, University of Connecticut, Storrs </h3>
+                    <p class="experience-subtitle">Database Administrator Intern</p>
+                    <p class="experience-duration">Jan 2024 - May 2024</p>
+                    <ul class="experience-description">
+                        <li>
+                            Cleaned and standardized over 10,000 student records from multiple sources using Python, improving data accuracy by 25% and established an automated data flow system to streamline data integration.
+                        </li>
+                        <li>
+                            Designed and deployed a Power BI dashboard that provided real-time insights into student performance, leading to a 15% increase in identifying at-risk students and improving support intervention strategies.
+                        </li>
+                        <li>
+                            Built and documented a comprehensive data dictionary and back-end architecture for long-term department use, streamlined manual data processing time by 40%, and enhanced data-driven decision-making across departments.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-logo">
+                    <img src="Cognizant_logo.jpeg" alt="Cognizant_logo">
+                </div>
+                <div class="experience-content">
+                    <h3 class="experience-title">Cognizant Technology Solutions, Chennai (Client: Incomm Payments, Atlanta,USA) </h3>
+                    <p class="experience-subtitle">Programmer Analyst</p>
+                    <p class="experience-duration">Oct 2021 - Jul 2023</p>
+                    <ul class="experience-description">
+                        <li>
+                            Collaborated with cross-functional teams to analyze user requirements, design and optimize database schemas, and develop complex SQL queries, improving payment gateway efficiency by 20%.
+                        </li>
+                        <li>
+                            Played a key role in a 10-member project team within a fast-paced Agile environment, streamlining database integrations and ensuring seamless SQL query execution during application deployments.
+                        </li>
+                        <li>
+                            Designed and implemented REST-based API solutions in Java, integrating them with optimized SQL queries to power applications such as SCAN Reload (barcode generation for POS terminals) and Remote Deposit Capture.
+                        </li>
+                        <li>
+                            Enhanced application security by addressing URI-based threats through regex expressions and SQL query validation, achieving a 100% reduction in security vulnerabilities.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- <div class="experience-item">
+                <div class="experience-logo">
+                    <img src="iris.png" alt="IRIS Logo">
+                </div>
+                <div class="experience-content">
+                    <h3 class="experience-title">IRIS, NITK</h3>
+                    <p class="experience-subtitle">Tech Lead</p>
+                    <p class="experience-duration">Apr 2023 - Apr 2024</p>
+                    <p class="experience-description">
+                        Led a team of 40+ students in digitizing administrative, academic, and alumni-related work.
+                    </p>
+                </div>
+            </div> -->
+        </div>
+    </section>
+</body>
+</html>
