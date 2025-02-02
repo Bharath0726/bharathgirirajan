@@ -762,3 +762,17 @@
        margin-bottom: 1rem; /* Add space between stacked buttons */
    }
 }
+
+
+/* Style for only the 'Projects' and 'Experience' buttons */
+.buttons .btn {
+   background: linear-gradient(135deg, #FF5733, #C70039); /* Custom gradient */
+   color: #fff; /* White text for contrast */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buttons .btn:hover {
+   background: linear-gradient(135deg, #C70039, #FF5733); /* Reverse gradient on hover */
+   transform: scale(1.05);
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
