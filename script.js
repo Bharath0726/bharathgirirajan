@@ -45,7 +45,7 @@ ScrollReveal().reveal('.home-content h1,.about-img',{origin:'left'});
 ScrollReveal().reveal('.home-content p,.about-content',{origin:'right'});
 
 const typed = new Typed('.multiple-text',{
-    strings:['I am a Grad Student at Uconn School of Business ','I am experienced in Machine Learning,Deep Learning,GenAI,Data science'],
+    strings:['AI Developer passionately building intelligent systems that redefine what\'s possible','graduate student at UConn School of Business translating cutting-edge AI into measurable real-world impact','Machine Learning Engineer experienced in Deep Learning, GenAI, and Data Science'],
     typeSpeed:80,
     backSpeed:30,
     backDelay:1000,
