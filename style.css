@@ -776,3 +776,142 @@
    transform: scale(1.05);
    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
+
+/* Chat Bubble Styles */
+.chat-bubble {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--main-color), #00d4ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(14, 239, 255, 0.4);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.chat-bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(14, 239, 255, 0.6);
+}
+
+.chat-bubble i {
+    font-size: 2.5rem;
+    color: var(--bg-color);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(14, 239, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(14, 239, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(14, 239, 255, 0.4);
+    }
+}
+
+/* Chat Modal Styles */
+.chat-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.chat-modal-content {
+    position: absolute;
+    bottom: 100px;
+    right: 30px;
+    width: 400px;
+    height: 600px;
+    background: var(--bg-color);
+    border-radius: 20px;
+    border: 2px solid var(--main-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.chat-header {
+    background: linear-gradient(135deg, var(--main-color), #00d4ff);
+    color: var(--bg-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.close-chat {
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.close-chat:hover {
+    transform: scale(1.2);
+}
+
+.chat-body {
+    flex: 1;
+    padding: 0;
+    background: #fff;
+}
+
+.chat-body iframe {
+    border-radius: 0 0 18px 18px;
+}
+
+/* Responsive Design for Chat Modal */
+@media (max-width: 768px) {
+    .chat-modal-content {
+        right: 15px;
+        left: 15px;
+        width: auto;
+        bottom: 80px;
+        height: 500px;
+    }
+    
+    .chat-bubble {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .chat-bubble i {
+        font-size: 2rem;
+    }
+}

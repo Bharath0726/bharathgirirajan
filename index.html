@@ -39,7 +39,6 @@
                     <div class="buttons">
                         <a href="projects.html" class="btn">Projects</a>
                         <a href="experience.html" class="btn">Experience</a>
-                        <a href="https://bharathgirirajan.streamlit.app" class="btn" target="_blank">Chat my Way</a>
                     </div>                                   
                 </div>
                 <div class="home-img">
@@ -252,7 +251,30 @@
   }
 </style>
 
-         <footer class="footer">
+         <!-- Chat Bubble -->
+    <div class="chat-bubble" id="chatBubble">
+        <i class='bx bx-message-dots'></i>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-modal-content">
+            <div class="chat-header">
+                <h3>Chat with Bharath's AI</h3>
+                <span class="close-chat" id="closeChat">&times;</span>
+            </div>
+            <div class="chat-body">
+                <iframe src="https://bharathgirirajan.streamlit.app/?embed=true" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
         <div class="footer-text">
             <p>Copyright &copy; 2024 by Bharath | All Rights Reserved.</p>
             <p>Visitors: <span id="visitor-count" style="color: #4169E1;">162</span></p>

@@ -69,3 +69,38 @@ function updateVisitorCount() {
 
 // Call the updateVisitorCount function when the page loads
 window.onload = updateVisitorCount;
+
+// Chat Bubble Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const chatBubble = document.getElementById('chatBubble');
+    const chatModal = document.getElementById('chatModal');
+    const closeChat = document.getElementById('closeChat');
+
+    // Open chat modal when bubble is clicked
+    chatBubble.addEventListener('click', function() {
+        chatModal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+
+    // Close chat modal when X is clicked
+    closeChat.addEventListener('click', function() {
+        chatModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    // Close chat modal when clicking outside the modal content
+    chatModal.addEventListener('click', function(e) {
+        if (e.target === chatModal) {
+            chatModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    });
+
+    // Close chat modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && chatModal.style.display === 'block') {
+            chatModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    });
+});
