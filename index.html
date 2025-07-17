@@ -252,13 +252,13 @@
 </style>
 
          <!-- Chat Bubble -->
-    <div class="chat-bubble" id="chatBubble">
+    <div class="chat-bubble" id="chatBubble" style="position: fixed !important; bottom: 30px !important; right: 30px !important; z-index: 9998 !important;">
         <i class='bx bx-message-dots'></i>
     </div>
 
     <!-- Chat Modal -->
-    <div class="chat-modal" id="chatModal">
-        <div class="chat-modal-content">
+    <div class="chat-modal" id="chatModal" style="display: none; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; z-index: 9999 !important;">
+        <div class="chat-modal-content" style="position: fixed !important; bottom: 100px !important; right: 30px !important; z-index: 10000 !important;">
             <div class="chat-header">
                 <h3>Chat with Bharath's AI</h3>
                 <span class="close-chat" id="closeChat">&times;</span>

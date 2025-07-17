@@ -72,35 +72,50 @@ window.onload = updateVisitorCount;
 
 // Chat Bubble Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const chatBubble = document.getElementById('chatBubble');
-    const chatModal = document.getElementById('chatModal');
-    const closeChat = document.getElementById('closeChat');
+    // Wait a bit to ensure all elements are loaded
+    setTimeout(function() {
+        const chatBubble = document.getElementById('chatBubble');
+        const chatModal = document.getElementById('chatModal');
+        const closeChat = document.getElementById('closeChat');
 
-    // Open chat modal when bubble is clicked
-    chatBubble.addEventListener('click', function() {
-        chatModal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    });
-
-    // Close chat modal when X is clicked
-    closeChat.addEventListener('click', function() {
-        chatModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    });
-
-    // Close chat modal when clicking outside the modal content
-    chatModal.addEventListener('click', function(e) {
-        if (e.target === chatModal) {
-            chatModal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
+        if (!chatBubble || !chatModal || !closeChat) {
+            console.error('Chat elements not found');
+            return;
         }
-    });
 
-    // Close chat modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && chatModal.style.display === 'block') {
+        // Ensure proper positioning
+        chatBubble.style.cssText = 'position: fixed !important; bottom: 30px !important; right: 30px !important; z-index: 9998 !important; visibility: visible !important; opacity: 1 !important;';
+        
+        // Open chat modal when bubble is clicked
+        chatBubble.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            chatModal.style.cssText = 'display: block !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; z-index: 9999 !important; background-color: rgba(0, 0, 0, 0.7) !important;';
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close chat modal when X is clicked
+        closeChat.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             chatModal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-    });
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close chat modal when clicking outside the modal content
+        chatModal.addEventListener('click', function(e) {
+            if (e.target === chatModal) {
+                chatModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close chat modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && chatModal.style.display === 'block') {
+                chatModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }, 100);
 });
