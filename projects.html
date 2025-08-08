@@ -201,6 +201,52 @@
             color: var(--bg-color);
             box-shadow: 0 0 10px var(--main-color);
         }
+
+        /* Project Tabs Styles */
+        .project-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(0, 238, 255, 0.2);
+            color: var(--text-color);
+            border: 2px solid var(--main-color);
+            padding: 1rem 2rem;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 2rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn:hover {
+            background: rgba(0, 238, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 238, 255, 0.3);
+        }
+
+        .tab-btn.active {
+            background: var(--main-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px var(--main-color);
+        }
+
+        @media (max-width: 768px) {
+            .project-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 80%;
+                margin: 0.5rem 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -219,6 +265,14 @@
 
     <section class="projects" id="projects">
         <h2 class="heading">My <span>Projects</span></h2>
+        
+        <!-- Project Category Tabs -->
+        <div class="project-tabs">
+            <button class="tab-btn active" data-category="ai-agentic">AI Agentic Projects</button>
+            <button class="tab-btn" data-category="data-engineering">Data Engineering</button>
+            <button class="tab-btn" data-category="data-analytics">Data Analytics</button>
+        </div>
+        
         <div class="projects-container">
             <!-- Project boxes will be populated here -->
         </div>
@@ -249,69 +303,75 @@
     </footer>
 
     <script>
-        // Project data
-        const projects = [
-            {
-                title: "AK - WhatsApp AI Agent",
-                description: "Meet AK, a WhatsApp agent. This implementation demonstrates how artificial intelligence can create engaging, natural conversations through a familiar messaging platform. While not fully sentient, AK showcases the current capabilities of modern AI technologies in a practical application.",
-                link: "https://github.com/Bharath0726/Ak_Whatsapp_Agent"
-            },
-            {
-                title: "Travel Genie - AI-Powered Trip Planner",
-                description: "Travel Genie is an AI-driven travel assistant that helps users plan trips, save itineraries, integrate with Google Calendar, and receive personalized recommendations via email. The project leverages Flask, OpenAI GPT, Airtable, and Google Calendar API to provide a seamless travel planning experience.",
-                link: "https://github.com/Bharath0726/TravelGenie"
-            },
-            {
-                title: "Crypto Bot",
-                description: "A powerful AI-driven chatbot designed to educate and guide users in the field of cryptocurrency. Developed using advanced large language models (LLMs), the chatbot provides real-time insights, answers queries, and improves user engagement for cryptocurrency trading.",
-                link: "https://github.com/Bharath0726/AnandaBot"
-            },
-            {
-                title: "Evaluate your LLM response",
-                description: "Designed and produced a Streamlit-based platform for evaluating LLMs with metrics like Rouge, BLEU, and BERT, enabling precise benchmarking and response quality analysis.",
-                link: "https://github.com/Bharath0726/PromptResponseTesting-"
-            },
-            {
-                title: "AI-Driven ATS Resume Scoring and Automation System",
-                description: "Revolutionizing Recruitment with AI-Driven ATS: Advanced Resume Scoring, Automated Candidate Communication, and Real-Time Skill Matching for Streamlined Hiring Processes",
-                link: "https://github.com/Bharath0726/AiRecruitingAgent"
-            },
-            {
-                title: "One View",
-                description: "A cool full-stack app enabling users to share a QR code with guests for photo uploads. All the photos are then visible to everyone with the QR. Features facial clustering to group similar faces, allowing users to easily view their photos.",
-                link: ""
-            },
-            {
-                title: "Sign-Interpreter",
-                description: "This project develops an advanced sign language recognition system using deep learning. It interprets gestures from video sequences, enhancing communication for individuals with hearing impairments.",
-                link: ""
-            },
-            {
-                title: "ViziAssist",
-                description: "An advanced technology built using Jetson Nano, leveraging deep learning to analyze road conditions trained on the Indian Driving Dataset. It detects vehicles, humans, bikes, and trucks, triggering specific LEDs to assist visually impaired individuals in driving confidently.",
-                link: ""
-            },
-            {
-                title: "pAInter",
-                description: "An AI-based home visualization system that helps users reimagine their living spaces with different styles and decor.",
-                link: ""
-            },
-            {
-                title: "Payease",
-                description: "An app that scans bills and helps you split the bill with utmost ease with friends and family, simplifying group expenses.",
-                link: ""
-            },
-            {
-                title: "Surreal AI",
-                description: "A real-time chatbot that does voice-to-voice processing and interaction with a Large Language Model, creating natural conversations.",
-                link: ""
-            },
-            {
-                title: "Icebreakers",
-                description: "A website that allows you to write efficient connection messages to your professional connections, enhancing networking opportunities.",
-                link: ""
-            }
-        ];
+        // Project data categorized
+        const projects = {
+            "ai-agentic": [
+                {
+                    title: "AK - WhatsApp AI Agent",
+                    description: "Meet AK, a WhatsApp agent. This implementation demonstrates how artificial intelligence can create engaging, natural conversations through a familiar messaging platform. While not fully sentient, AK showcases the current capabilities of modern AI technologies in a practical application.",
+                    link: "https://github.com/Bharath0726/Ak_Whatsapp_Agent"
+                },
+                {
+                    title: "Travel Genie - AI-Powered Trip Planner",
+                    description: "Travel Genie is an AI-driven travel assistant that helps users plan trips, save itineraries, integrate with Google Calendar, and receive personalized recommendations via email. The project leverages Flask, OpenAI GPT, Airtable, and Google Calendar API to provide a seamless travel planning experience.",
+                    link: "https://github.com/Bharath0726/TravelGenie"
+                },
+                {
+                    title: "Crypto Bot",
+                    description: "A powerful AI-driven chatbot designed to educate and guide users in the field of cryptocurrency. Developed using advanced large language models (LLMs), the chatbot provides real-time insights, answers queries, and improves user engagement for cryptocurrency trading.",
+                    link: "https://github.com/Bharath0726/AnandaBot"
+                },
+                {
+                    title: "Evaluate your LLM response",
+                    description: "Designed and produced a Streamlit-based platform for evaluating LLMs with metrics like Rouge, BLEU, and BERT, enabling precise benchmarking and response quality analysis.",
+                    link: "https://github.com/Bharath0726/PromptResponseTesting-"
+                },
+                {
+                    title: "AI-Driven ATS Resume Scoring and Automation System",
+                    description: "Revolutionizing Recruitment with AI-Driven ATS: Advanced Resume Scoring, Automated Candidate Communication, and Real-Time Skill Matching for Streamlined Hiring Processes",
+                    link: "https://github.com/Bharath0726/AiRecruitingAgent"
+                },
+                {
+                    title: "Sign-Interpreter",
+                    description: "This project develops an advanced sign language recognition system using deep learning. It interprets gestures from video sequences, enhancing communication for individuals with hearing impairments.",
+                    link: ""
+                },
+                {
+                    title: "Surreal AI",
+                    description: "A real-time chatbot that does voice-to-voice processing and interaction with a Large Language Model, creating natural conversations.",
+                    link: ""
+                }
+            ],
+            "data-engineering": [
+                {
+                    title: "One View",
+                    description: "A cool full-stack app enabling users to share a QR code with guests for photo uploads. All the photos are then visible to everyone with the QR. Features facial clustering to group similar faces, allowing users to easily view their photos.",
+                    link: ""
+                },
+                {
+                    title: "ViziAssist",
+                    description: "An advanced technology built using Jetson Nano, leveraging deep learning to analyze road conditions trained on the Indian Driving Dataset. It detects vehicles, humans, bikes, and trucks, triggering specific LEDs to assist visually impaired individuals in driving confidently.",
+                    link: ""
+                },
+                {
+                    title: "Payease",
+                    description: "An app that scans bills and helps you split the bill with utmost ease with friends and family, simplifying group expenses.",
+                    link: ""
+                }
+            ],
+            "data-analytics": [
+                {
+                    title: "pAInter",
+                    description: "An AI-based home visualization system that helps users reimagine their living spaces with different styles and decor.",
+                    link: ""
+                },
+                {
+                    title: "Icebreakers",
+                    description: "A website that allows you to write efficient connection messages to your professional connections, enhancing networking opportunities.",
+                    link: ""
+                }
+            ]
+        };
 
         /// Achievement data
 const achievements = [
@@ -377,16 +437,24 @@ const achievements = [
             }
         ];
 
-        // Populate projects with pagination
-        const projectsContainer = document.querySelector('.projects-container');
-        const projectsPerPage = 6;
+        // Tab functionality
+        let currentCategory = 'ai-agentic';
         let currentPage = 0;
+        const projectsPerPage = 6;
 
-        function displayProjects(page) {
+        function displayProjects(category, page = 0) {
+            const projectsContainer = document.querySelector('.projects-container');
             projectsContainer.innerHTML = ''; // Clear existing projects
+            
+            const categoryProjects = projects[category] || [];
             const start = page * projectsPerPage;
             const end = start + projectsPerPage;
-            const pageProjects = projects.slice(start, end);
+            const pageProjects = categoryProjects.slice(start, end);
+
+            if (pageProjects.length === 0) {
+                projectsContainer.innerHTML = '<div style="text-align: center; color: var(--text-color); font-size: 1.8rem; padding: 2rem;">No projects in this category yet.</div>';
+                return;
+            }
 
             pageProjects.forEach(project => {
                 const projectBox = document.createElement('div');
@@ -394,29 +462,55 @@ const achievements = [
                 projectBox.innerHTML = `
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
-                    <a href="${project.link}" target="_blank">View Project</a>
+                    ${project.link ? `<a href="${project.link}" target="_blank">View Project</a>` : '<span style="color: #666;">Coming Soon</span>'}
                 `;
                 projectsContainer.appendChild(projectBox);
             });
 
-            // Add navigation arrows
-            const navContainer = document.createElement('div');
-            navContainer.classList.add('project-nav');
-            navContainer.innerHTML = `
-                ${page > 0 ? '<button class="nav-btn prev-btn">&larr; Previous</button>' : ''}
-                ${end < projects.length ? '<button class="nav-btn next-btn">Next &rarr;</button>' : ''}
-            `;
-            projectsContainer.appendChild(navContainer);
+            // Add navigation arrows if needed
+            if (categoryProjects.length > projectsPerPage) {
+                const navContainer = document.createElement('div');
+                navContainer.classList.add('project-nav');
+                navContainer.innerHTML = `
+                    ${page > 0 ? '<button class="nav-btn prev-btn">&larr; Previous</button>' : ''}
+                    ${end < categoryProjects.length ? '<button class="nav-btn next-btn">Next &rarr;</button>' : ''}
+                `;
+                projectsContainer.appendChild(navContainer);
 
-            // Add event listeners to navigation buttons
-            const prevBtn = navContainer.querySelector('.prev-btn');
-            const nextBtn = navContainer.querySelector('.next-btn');
-            if (prevBtn) prevBtn.addEventListener('click', () => displayProjects(page - 1));
-            if (nextBtn) nextBtn.addEventListener('click', () => displayProjects(page + 1));
+                // Add event listeners to navigation buttons
+                const prevBtn = navContainer.querySelector('.prev-btn');
+                const nextBtn = navContainer.querySelector('.next-btn');
+                if (prevBtn) prevBtn.addEventListener('click', () => displayProjects(category, page - 1));
+                if (nextBtn) nextBtn.addEventListener('click', () => displayProjects(category, page + 1));
+            }
         }
 
-        // Initial display
-        displayProjects(currentPage);
+        // Tab switching functionality
+        function switchTab(category) {
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            // Display projects for selected category
+            currentCategory = category;
+            currentPage = 0;
+            displayProjects(category, 0);
+        }
+
+        // Add event listeners to tab buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    switchTab(category);
+                });
+            });
+            
+            // Initial display
+            displayProjects(currentCategory, currentPage);
+        });
 
         // Populate achievements
         const achievementsContainer = document.querySelector('.achievements-container');

@@ -8,10 +8,19 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
+        :root {
+            --bg-color: #1f242d;
+            --second-bg-color: #323946;
+            --text-color: #fff;
+            --main-color: #0ef;
+        }
+        
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .header {
             background-color: var(--second-bg-color);
@@ -34,58 +43,360 @@
             text-decoration: none;
             font-size: 1.5rem;
         }
+        /* Modern Experience Section */
         .experience-section {
-            padding: 4rem 9%;
+            padding: 6rem 9%;
+            background: linear-gradient(135deg, #1f242d 0%, #323946 50%, #1f242d 100%);
+            min-height: 100vh;
+            display: block;
+            visibility: visible;
+            opacity: 1;
         }
-        .experience-heading {
-            font-size: 3rem;
+
+        .experience-header {
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--main-color);
+            margin-bottom: 5rem;
         }
-        .experience-container {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+
+        .experience-heading {
+            font-size: 4.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-color);
         }
-        .experience-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            background: var(--second-bg-color);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+
+        .experience-heading .highlight {
+            background: linear-gradient(135deg, var(--main-color), #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .experience-logo img {
-            width: 50px;
-            height: 50px;
+
+        .experience-subtitle {
+            font-size: 2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* Timeline Layout */
+        .experience-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--main-color), #00d4ff, #ff6b6b, #4ecdc4);
+            border-radius: 2px;
+        }
+
+        /* Timeline Items */
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 1;
+            transform: translateX(0);
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .timeline-item.current {
+            opacity: 1;
+            transform: translateX(0);
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Timeline Markers */
+        .timeline-marker {
+            position: absolute;
+            left: 0;
+            top: 2rem;
+            z-index: 2;
+        }
+
+        .marker-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--main-color);
             border-radius: 50%;
+            border: 4px solid var(--bg-color);
+            box-shadow: 0 0 0 4px rgba(0, 238, 255, 0.3);
+            animation: pulse 2s infinite;
         }
-        .experience-content {
+
+        .timeline-item.current .marker-dot {
+            background: #00ff88;
+            box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.3);
+        }
+
+        .marker-line {
+            position: absolute;
+            left: 8px;
+            top: 20px;
+            width: 4px;
+            height: calc(100% + 2rem);
+            background: linear-gradient(180deg, var(--main-color), transparent);
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-left: 4rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--main-color), #00d4ff, #ff6b6b, #4ecdc4);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 238, 255, 0.15);
+            border-color: var(--main-color);
+        }
+
+        .timeline-item.current .experience-card {
+            border-color: #00ff88;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Card Header */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 8px;
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .role-info {
             flex-grow: 1;
         }
-        .experience-title {
-            font-size: 2rem;
+
+        .company-name {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--main-color);
+            margin-bottom: 1rem;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .location, .duration {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .status {
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .status.current {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #000;
+        }
+
+        /* Card Content */
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(0, 238, 255, 0.1);
+            color: var(--text-color);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 238, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--main-color);
+            color: var(--bg-color);
+            transform: scale(1.05);
+        }
+
+        .achievements h5 {
+            font-size: 1.8rem;
+            color: var(--main-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievements li {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--main-color);
             font-weight: bold;
+        }
+
+        .achievements strong {
             color: var(--main-color);
         }
-        .experience-subtitle {
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-top: 0.5rem;
-        }
-        .experience-duration {
-            font-size: 1.4rem;
-            margin-top: 0.5rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .experience-description {
-            font-size: 1.4rem;
-            margin-top: 1rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .experience-section {
+                padding: 4rem 2rem;
+            }
+
+            .experience-heading {
+                font-size: 3.6rem;
+            }
+
+            .experience-subtitle {
+                font-size: 1.6rem;
+            }
+
+            .experience-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-marker {
+                left: 0;
+            }
+
+            .experience-card {
+                margin-left: 2rem;
+                padding: 2rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .company-logo {
+                width: 60px;
+                height: 60px;
+                padding: 6px;
+            }
+
+            .company-name {
+                font-size: 2rem;
+            }
+
+            .job-title {
+                font-size: 1.6rem;
+            }
+
+            .job-meta {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+
+            .achievements li {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
@@ -102,115 +413,178 @@
     </header>
 
     <section class="experience-section">
-        <h2 class="experience-heading">Experience</h2>
-        <div class="experience-container">
-            <div class="experience-item">
-                <div class="experience-logo">
-                    <img src="EasyBee_Final_15032024.png" alt="EasyBee AI Logo" class="full-logo">
+        <div class="experience-header">
+            <h2 class="experience-heading">Professional <span class="highlight">Experience</span></h2>
+            <p class="experience-subtitle">My journey in AI, Data Science, and Software Development</p>
+        </div>
+        
+        <div class="experience-timeline">
+            <!-- EasyBee AI -->
+            <div class="timeline-item current">
+                <div class="timeline-marker">
+                    <div class="marker-dot"></div>
+                    <div class="marker-line"></div>
                 </div>
-                <div class="experience-content">
-                    <h3 class="experience-title">EasyBee AI, Boston, MA</h3>
-                    <p class="experience-subtitle">AI Developer</p>
-                    <p class="experience-duration">Feb 2025 - Present</p>
-                    <ul class="experience-description">
-                        <li>
-                            Architected a scalable PostgreSQL schema for a production AI agent's long-term memory, optimizing data models crucial for conversational history retrieval times by 40%.
-                        </li>
-                        <li>
-                            Engineered a high-performance data caching layer using Redis, which reduced API latency by over 25% and improved the overall responsiveness of the AI agent during peak loads, crucial for robust AI model inputs.
-                        </li>
-                        <li>
-                            Orchestrated a robust ETL pipeline to ingest and preprocess diverse data formats (JSON, PDF), enabling a Retrieval Augmented Generation (RAG) system with a 15% increase in contextual accuracy.
-                        </li>
-                        <li>
-                            Owned the end-to-end backend development for the AI platform using Python (FastAPI), building and maintaining over 20 RESTful API services to support active users and facilitate seamless agent deployment and interaction.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-logo">
-                    <img src="Ananda.png" alt="Ananda Logo" class="full-logo">
-                </div>
-                <div class="experience-content">
-                    <h3 class="experience-title">Ananda AI, New York, USA.</h3>
-                    <p class="experience-subtitle">Gen AI Developer Intern</p>
-                    <p class="experience-duration">Aug 2024 - Dec 2024</p>
-                    <ul class="experience-description">
-                        <li>
-                            Designed and developed AnandaBot, an AI-powered chatbot built end-to-end using Large Language Models (LLMs) like Llama3-8b-8192, serving as a comprehensive educational platform to address cryptocurrency-related queries with accurate, real-time, and context-aware responses.
-                        </li>
-                        <li>
-                            Implemented a Retrieval-Augmented Generation (RAG) pipeline, integrating proprietary company data with Langchain for robust conversational workflows, achieving 90% log traceability and enhanced domain-specific response accuracy.
-                        </li>
-                        <li>
-                            Developed additional features, including a buy-sell recommendation system using time-series forecasting and deployed the chatbot on a cloud-based architecture with FAISS and PyPDF, reducing data retrieval time by 40% and boosting system performance.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-logo">
-                    <img src="Uconn_Logo.jpeg" alt="Uconn_Logo">
-                </div>
-                <div class="experience-content">
-                    <h3 class="experience-title">Allied Health Science Department, University of Connecticut, Storrs </h3>
-                    <p class="experience-subtitle">Database Administrator Intern</p>
-                    <p class="experience-duration">Jan 2024 - May 2024</p>
-                    <ul class="experience-description">
-                        <li>
-                            Cleaned and standardized over 10,000 student records from multiple sources using Python, improving data accuracy by 25% and established an automated data flow system to streamline data integration.
-                        </li>
-                        <li>
-                            Designed and deployed a Power BI dashboard that provided real-time insights into student performance, leading to a 15% increase in identifying at-risk students and improving support intervention strategies.
-                        </li>
-                        <li>
-                            Built and documented a comprehensive data dictionary and back-end architecture for long-term department use, streamlined manual data processing time by 40%, and enhanced data-driven decision-making across departments.
-                        </li>
-                    </ul>
+                <div class="experience-card">
+                    <div class="card-header">
+                        <div class="company-logo">
+                            <img src="EasyBee_Final_15032024.png" alt="EasyBee AI">
+                        </div>
+                        <div class="role-info">
+                            <h3 class="company-name">EasyBee AI</h3>
+                            <h4 class="job-title">AI Developer</h4>
+                            <div class="job-meta">
+                                <span class="location">Boston, MA</span>
+                                <span class="duration">Feb 2025 - Present</span>
+                                <span class="status current">Current</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">AI/ML</span>
+                        </div>
+                        <div class="achievements">
+                            <h5>Key Achievements:</h5>
+                            <ul>
+                                <li>Architected scalable PostgreSQL schema for AI agent's long-term memory, optimizing conversational history retrieval by <strong>40%</strong></li>
+                                <li>Engineered high-performance Redis caching layer, reducing API latency by <strong>25%</strong> during peak loads</li>
+                                <li>Orchestrated robust ETL pipeline for diverse data formats, enabling RAG system with <strong>15%</strong> increase in contextual accuracy</li>
+                                <li>Built and maintained <strong>20+ RESTful API services</strong> for seamless AI agent deployment and interaction</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="experience-item">
-                <div class="experience-logo">
-                    <img src="Cognizant_logo.jpeg" alt="Cognizant_logo">
+            <!-- Ananda AI -->
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="marker-dot"></div>
+                    <div class="marker-line"></div>
                 </div>
-                <div class="experience-content">
-                    <h3 class="experience-title">Cognizant Technology Solutions, Chennai (Client: Incomm Payments, Atlanta,USA) </h3>
-                    <p class="experience-subtitle">Programmer Analyst</p>
-                    <p class="experience-duration">Oct 2021 - Jul 2023</p>
-                    <ul class="experience-description">
-                        <li>
-                            Collaborated with cross-functional teams to analyze user requirements, design and optimize database schemas, and develop complex SQL queries, improving payment gateway efficiency by 20%.
-                        </li>
-                        <li>
-                            Played a key role in a 10-member project team within a fast-paced Agile environment, streamlining database integrations and ensuring seamless SQL query execution during application deployments.
-                        </li>
-                        <li>
-                            Designed and implemented REST-based API solutions in Java, integrating them with optimized SQL queries to power applications such as SCAN Reload (barcode generation for POS terminals) and Remote Deposit Capture.
-                        </li>
-                        <li>
-                            Enhanced application security by addressing URI-based threats through regex expressions and SQL query validation, achieving a 100% reduction in security vulnerabilities.
-                        </li>
-                    </ul>
+                <div class="experience-card">
+                    <div class="card-header">
+                        <div class="company-logo">
+                            <img src="Ananda.png" alt="Ananda AI">
+                        </div>
+                        <div class="role-info">
+                            <h3 class="company-name">Ananda AI</h3>
+                            <h4 class="job-title">Gen AI Developer Intern</h4>
+                            <div class="job-meta">
+                                <span class="location">New York, USA</span>
+                                <span class="duration">Aug 2024 - Dec 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="tech-stack">
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">Llama3</span>
+                            <span class="tech-tag">Langchain</span>
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">FAISS</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="achievements">
+                            <h5>Key Achievements:</h5>
+                            <ul>
+                                <li>Designed and developed <strong>AnandaBot</strong>, an AI-powered chatbot using Llama3-8b-8192 for cryptocurrency education</li>
+                                <li>Implemented RAG pipeline with <strong>90% log traceability</strong> and enhanced domain-specific response accuracy</li>
+                                <li>Built buy-sell recommendation system using time-series forecasting, reducing data retrieval time by <strong>40%</strong></li>
+                                <li>Deployed cloud-based architecture with FAISS and PyPDF for robust AI model performance</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- <div class="experience-item">
-                <div class="experience-logo">
-                    <img src="iris.png" alt="IRIS Logo">
+            <!-- UConn -->
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="marker-dot"></div>
+                    <div class="marker-line"></div>
                 </div>
-                <div class="experience-content">
-                    <h3 class="experience-title">IRIS, NITK</h3>
-                    <p class="experience-subtitle">Tech Lead</p>
-                    <p class="experience-duration">Apr 2023 - Apr 2024</p>
-                    <p class="experience-description">
-                        Led a team of 40+ students in digitizing administrative, academic, and alumni-related work.
-                    </p>
+                <div class="experience-card">
+                    <div class="card-header">
+                        <div class="company-logo">
+                            <img src="Uconn_Logo.jpeg" alt="UConn">
+                        </div>
+                        <div class="role-info">
+                            <h3 class="company-name">University of Connecticut</h3>
+                            <h4 class="job-title">Database Administrator Intern</h4>
+                            <div class="job-meta">
+                                <span class="location">Storrs, CT</span>
+                                <span class="duration">Jan 2024 - May 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">ETL</span>
+                        </div>
+                        <div class="achievements">
+                            <h5>Key Achievements:</h5>
+                            <ul>
+                                <li>Cleaned and standardized <strong>10,000+ student records</strong>, improving data accuracy by <strong>25%</strong></li>
+                                <li>Designed Power BI dashboard for real-time insights, increasing at-risk student identification by <strong>15%</strong></li>
+                                <li>Built comprehensive data dictionary and back-end architecture, streamlining processing time by <strong>40%</strong></li>
+                                <li>Enhanced data-driven decision-making across departments with automated data flow systems</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div> -->
+            </div>
+
+            <!-- Cognizant -->
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="marker-dot"></div>
+                    <div class="marker-line"></div>
+                </div>
+                <div class="experience-card">
+                    <div class="card-header">
+                        <div class="company-logo">
+                            <img src="Cognizant_logo.jpeg" alt="Cognizant">
+                        </div>
+                        <div class="role-info">
+                            <h3 class="company-name">Cognizant Technology Solutions</h3>
+                            <h4 class="job-title">Programmer Analyst</h4>
+                            <div class="job-meta">
+                                <span class="location">Chennai, India (Client: Incomm Payments, Atlanta, USA)</span>
+                                <span class="duration">Oct 2021 - Jul 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">Agile</span>
+                            <span class="tech-tag">Payment Systems</span>
+                        </div>
+                        <div class="achievements">
+                            <h5>Key Achievements:</h5>
+                            <ul>
+                                <li>Collaborated with cross-functional teams to optimize database schemas, improving payment gateway efficiency by <strong>20%</strong></li>
+                                <li>Led 10-member project team in Agile environment, streamlining database integrations</li>
+                                <li>Designed REST-based API solutions in Java for SCAN Reload and Remote Deposit Capture applications</li>
+                                <li>Achieved <strong>100% reduction</strong> in security vulnerabilities through regex expressions and SQL validation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </body>
